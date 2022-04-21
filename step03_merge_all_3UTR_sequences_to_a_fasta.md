@@ -8,6 +8,10 @@ Let's upload all the 3'-UTR sequnences to a directory ./database/3UTR in linux s
 # cd to the database diretory
 $ paste --delimiter=\\n --serial ./3UTR/* > Rno_3UTR.fasta #If use cat command, you cann't let each file to be on a separate line.
 $ less Rno_3UTR.fasta
+# Some 3'-UTRs are only "T", which recognized as "TRUE" by shell.
+$ less Rno_3UTR.fasta | grep 'TRUE' -A 1
+$ tac Rno_3UTR.fasta | sed '/TRUE/I,+1 d' | tac > Rno_3UTR.fasta1
+$ mv Rno_3UTR.fasta1 Rno_3UTR.fasta
 ```
 
 Now, We finish this work.
